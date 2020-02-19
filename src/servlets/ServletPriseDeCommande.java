@@ -86,6 +86,7 @@ public class ServletPriseDeCommande extends HttpServlet {
 		request.setAttribute("montantCommande", montantCommande);
 		request.setAttribute("commandeEnCours", commandeEnCours);
 		response.sendRedirect("ServletPriseDeCommande");
+		System.out.println("coucou");
 
 		/*
 		 * TODO r�cuperer les donn�es du formulaire de prise de commande et INSERER la
