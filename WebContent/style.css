@@ -1,0 +1,44 @@
+body {
+	position: relative;
+}
+
+.container-fluid {
+	position: relative;
+	width: 83%;
+}
+
+nav {
+	position: relative;
+	margin-top: 30px;
+}
+
+form {
+	
+	margin-top: 60px;;
+}
+
+h2 {
+	font-size: 1.2rem;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+thead {
+	background-color: #007bff;
+	color: white;
+}
+.liste {
+	font-weight: bold;
+}
+
+.nav-pills {
+	height: 60px;
+	line-height: 40px;
+	font-size: 1.2rem;;
+	font-weight: 600;
+}
