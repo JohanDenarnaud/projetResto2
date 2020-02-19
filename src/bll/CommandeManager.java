@@ -25,4 +25,10 @@ public class CommandeManager {
 
 		return dao.selectAllCommandes();
 	}
+
+	public void insertCommande(Commande commande) {
+
+		dao.insertCommande(commande);
+
+	}
 }

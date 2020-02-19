@@ -1,6 +1,6 @@
 package dal;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +25,8 @@ public class CommandeDAOBouchonImpl implements CommandeDAO {
 		plats.add(plat3);
 		plats.add(plat4);
 
-		Commande com1 = new Commande(1, 10, 55, false, LocalTime.now(), plats);
-		Commande com2 = new Commande(2, 2, 60, false, LocalTime.now(), plats);
+		Commande com1 = new Commande(1, 10, 55, false, LocalDateTime.now(), plats);
+		Commande com2 = new Commande(2, 2, 60, false, LocalDateTime.now(), plats);
 		commandes.add(com1);
 		commandes.add(com2);
 	}
@@ -35,6 +35,13 @@ public class CommandeDAOBouchonImpl implements CommandeDAO {
 	public List<Commande> selectAllCommandes() {
 
 		return commandes;
+	}
+
+	@Override
+	public void insertCommande(Commande commande) {
+
+		commandes.add(commande);
+
 	}
 
 }

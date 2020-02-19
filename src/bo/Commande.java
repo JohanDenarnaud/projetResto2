@@ -1,7 +1,6 @@
 package bo;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class Commande {
 		this.plats = new ArrayList<Plat>();
 	}
 
-	public Commande(Integer id, Integer numTable, Integer montant, boolean reglement, LocalTime heureDeCommande,
+	public Commande(Integer id, Integer numTable, Integer montant, boolean reglement, LocalDateTime heureDeCommande,
 			List<Plat> plats) {
 		super();
 		this.id = id;
@@ -98,7 +97,7 @@ public class Commande {
 		this.reglement = reglement;
 	}
 
-	public LocalTime getHeureDeCommande() {
+	public LocalDateTime getHeureDeCommande() {
 		return heureDeCommande;
 	}
 

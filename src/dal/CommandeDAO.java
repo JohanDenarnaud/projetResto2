@@ -8,4 +8,6 @@ public interface CommandeDAO {
 
 	List<Commande> selectAllCommandes();
 
+	void insertCommande(Commande commande);
+
 }

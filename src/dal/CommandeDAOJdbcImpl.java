@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -25,6 +26,13 @@ public class CommandeDAOJdbcImpl implements CommandeDAO {
 	public List<Commande> selectAllCommandes() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void insertCommande(Commande commande) {
+		Transaction t = session.beginTransaction();
+		session.save(commande);
+		t.commit();
 	}
 
 }
