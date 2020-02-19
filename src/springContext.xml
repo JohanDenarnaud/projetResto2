@@ -8,12 +8,13 @@
 	<bean id="pm" class="bll.PlatManager" >
 		<property name="dao" ref="dao"></property>
 	</bean>
-<!-- 	<bean id="dao1" class="dal.CommandeDAOJdbcImpl" />
+	
+	<bean id="dao1" class="dal.CommandeDAOBouchonImpl" />
 	
 	<bean id="cm" class="bll.CommandeManager" >
 		<property name="dao" ref="dao1"></property>
 	</bean>
-	 -->
+	
 	
 	
 	

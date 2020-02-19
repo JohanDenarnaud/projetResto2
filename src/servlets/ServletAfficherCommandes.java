@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,12 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import bll.CommandeManager;
+import bo.Commande;
+
 /**
  * Servlet implementation class ServletAfficherCommandes
  */
 @WebServlet("/ServletAfficherCommandes")
 public class ServletAfficherCommandes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private CommandeManager cm;
+
+	@Override
+	public void init() throws ServletException {
+		ApplicationContext context = new ClassPathXmlApplicationContext("springContext.xml");
+		cm = context.getBean("cm", CommandeManager.class);
+		super.init();
+
+	}
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -32,8 +48,12 @@ public class ServletAfficherCommandes extends HttpServlet {
 			throws ServletException, IOException {
 
 		/*
-		 * TODO SELECTALL des commandes (toutes ou non réglé à voir)
+		 * TODO SELECTALL des commandes (toutes ou non rï¿½glï¿½ ï¿½ voir)
 		 */
+
+		List<Commande> commandes = cm.selectAllCommandes();
+
+		request.setAttribute("commandes", commandes);
 
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("afficherCommandes");
 		rd.forward(request, response);

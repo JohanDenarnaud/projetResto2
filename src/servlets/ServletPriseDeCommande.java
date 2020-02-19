@@ -56,11 +56,7 @@ public class ServletPriseDeCommande extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//if (liste de plat commande existe) {
-//	ajouter dans la liste  commande sur la jsp prise de commande
-//}else {
-//	creer la liste et ajouter le plat dans la liste 
-//}			
+
 		String id = request.getParameter("id");
 		String nom = request.getParameter("nom");
 		String categorie = request.getParameter("categorie");
@@ -86,7 +82,6 @@ public class ServletPriseDeCommande extends HttpServlet {
 		request.setAttribute("montantCommande", montantCommande);
 		request.setAttribute("commandeEnCours", commandeEnCours);
 		response.sendRedirect("ServletPriseDeCommande");
-		System.out.println("cou");
 
 		/*
 		 * TODO r�cuperer les donn�es du formulaire de prise de commande et INSERER la

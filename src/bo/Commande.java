@@ -23,12 +23,13 @@ public class Commande {
 	private Integer id;
 
 	/**
-	 * Le numero de la table ou l'on à passée la commande
+	 * Le numero de la table ou l'on ï¿½ passï¿½e la commande
 	 */
 	@Column(name = "numero de table")
 	private Integer numTable;
+
 	/**
-	 * est ce que la commande à etait payer?
+	 * est ce que la commande ï¿½ etait payer?
 	 * 
 	 */
 	@Column(name = "reglement")
@@ -54,6 +55,7 @@ public class Commande {
 		super();
 		this.id = id;
 		this.numTable = numTable;
+
 		this.reglement = reglement;
 		this.heureDeCommande = heureDeCommande;
 		this.plats = plats;
@@ -99,7 +101,12 @@ public class Commande {
 		this.plats = plats;
 	}
 
-	public void totalCommande() {
+	public Integer totalCommande(List<Plat> plats) {
+		Integer montant = 0;
+		for (Plat current : plats) {
+			montant = montant + current.getPrixDeVente();
+		}
+		return montant;
 		// recuperer le prix de chaque plat est faire le total
 	}
 
