@@ -10,4 +10,6 @@ public interface PlatDAO {
 
 	public List<Plat> selectByCategorie(String string);
 
+	public void insertPlat(Plat plat);
+
 }

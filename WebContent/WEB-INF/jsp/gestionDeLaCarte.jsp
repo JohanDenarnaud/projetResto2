@@ -20,23 +20,23 @@
 				</nav>
 			</header>
 			<main>
-				<form class="form-row align-items-center">
+				<form class="form-row align-items-center" method="Post" action="${ pageContext.request.contextPath }/ServletGestionDeLaCarte">
 					<div class="col-sm-12">
 					<!-- AJOUTER DE NOUVEAUX PLATS -->
 					<label class="liste" for="liste-entree">Ajouter un nouveau plat</label>
 					<div class="input-group">
-					<input type="text" class="form-control" placeholder="Nom">
-								<input type="text" class="form-control" placeholder="Prix Vente">
-							<input type="text" class="form-control" placeholder="Prix Revient">
-					<input type="text" class="form-control" placeholder="Qté Stock">
-					  <select class="custom-select" id="inputGroupSelect04">
+					<input type="text" class="form-control" placeholder="Nom" name="nom">
+					<input type="text" class="form-control" placeholder="Prix Vente" name = "prixVente">
+					<input type="text" class="form-control" placeholder="Prix Revient" name="prixRevient">
+					<input type="text" class="form-control" placeholder="Qté Stock" name="stock">
+					  <select class="custom-select" id="inputGroupSelect04" name="categorie">
 					    <option selected>Catégorie</option>
 									<option value="1">Entrée</option>
 									<option value="2">Plat</option>
 									<option value="3">Dessert</option>
 					  </select>
 					  <div class="input-group-append">
-					    <button class="btn btn-primary" type="button">+</button>
+					    <button class="btn btn-primary" type="submit">+</button>
 					  </div>
 					</div>	
 				</form>

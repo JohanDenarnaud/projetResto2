@@ -44,4 +44,11 @@ public class PlatDAOBouchonImpl implements PlatDAO {
 		return platsTries;
 	}
 
+	@Override
+	public void insertPlat(Plat plat) {
+
+		plats.add(plat);
+
+	}
+
 }

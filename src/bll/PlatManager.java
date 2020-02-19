@@ -44,4 +44,8 @@ public class PlatManager {
 		return montantCommande;
 	}
 
+	public void insertPlat(Plat plat) {
+		dao.insertPlat(plat);
+	}
+
 }
