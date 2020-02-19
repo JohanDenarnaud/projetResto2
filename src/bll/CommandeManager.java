@@ -29,6 +29,7 @@ public class CommandeManager {
 	public void insertCommande(Commande commande) {
 
 		dao.insertCommande(commande);
+		System.out.println();
 
 	}
 }
