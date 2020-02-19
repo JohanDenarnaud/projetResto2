@@ -12,4 +12,6 @@ public interface PlatDAO {
 
 	public void insertPlat(Plat plat);
 
+	public void deleteById(Integer idPlatInt);
+
 }

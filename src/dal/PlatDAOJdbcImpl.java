@@ -48,4 +48,15 @@ public class PlatDAOJdbcImpl implements PlatDAO {
 
 	}
 
+	@Override
+	public void deleteById(Integer idPlatInt) {
+		Transaction t = session.beginTransaction();
+		Query query = session.createQuery("delete Plat where id = :ID");
+		query.setParameter("ID", idPlatInt);
+
+		query.executeUpdate();
+		t.commit();
+
+	}
+
 }

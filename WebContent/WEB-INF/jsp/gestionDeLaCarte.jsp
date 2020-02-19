@@ -31,9 +31,9 @@
 					<input type="text" class="form-control" placeholder="Qté Stock" name="stock">
 					  <select class="custom-select" id="inputGroupSelect04" name="categorie">
 					    <option selected>Catégorie</option>
-									<option value="1">Entrée</option>
-									<option value="2">Plat</option>
-									<option value="3">Dessert</option>
+									<option value="entree">Entrée</option>
+									<option value="plat">Plat</option>
+									<option value="dessert">Dessert</option>
 					  </select>
 					  <div class="input-group-append">
 					    <button class="btn btn-primary" type="submit">+</button>

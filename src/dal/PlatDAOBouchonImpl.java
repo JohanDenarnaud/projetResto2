@@ -51,4 +51,10 @@ public class PlatDAOBouchonImpl implements PlatDAO {
 
 	}
 
+	@Override
+	public void deleteById(Integer idPlatInt) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

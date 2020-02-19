@@ -48,4 +48,10 @@ public class PlatManager {
 		dao.insertPlat(plat);
 	}
 
+	public void deleteById(Integer idPlatInt) {
+
+		dao.deleteById(idPlatInt);
+
+	}
+
 }
