@@ -7,6 +7,15 @@ import dal.PlatDAO;
 
 public class PlatManager {
 	private PlatDAO dao;
+	private static PlatManager instance;
+
+	public static PlatManager getInstance() {
+		return instance;
+	}
+
+	public PlatManager() {
+		PlatManager.instance = this;
+	}
 
 	public List<Plat> selectAll() {
 		return dao.selectAll();

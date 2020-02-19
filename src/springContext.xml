@@ -3,17 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="dao" class="dal.PlatDAOJdbcImpl" />
+	<bean id="dao" class="dal.PlatDAOBouchonImpl" />
 	
 	<bean id="pm" class="bll.PlatManager" >
 		<property name="dao" ref="dao"></property>
 	</bean>
-	<bean id="dao1" class="dal.CommandeDAOJdbcImpl" />
+<!-- 	<bean id="dao1" class="dal.CommandeDAOJdbcImpl" />
 	
 	<bean id="cm" class="bll.CommandeManager" >
 		<property name="dao" ref="dao1"></property>
 	</bean>
-	
+	 -->
 	
 	
 	

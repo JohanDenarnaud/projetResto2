@@ -22,6 +22,7 @@ public class ServletPriseDeCommande extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PlatManager pm;
 	private List<Plat> commandeEnCours;
+	Integer montantCommande;
 
 	@Override
 	public void init() throws ServletException {
@@ -42,12 +43,12 @@ public class ServletPriseDeCommande extends HttpServlet {
 		List<Plat> plats = pm.selectByCategorie("plat");
 		List<Plat> desserts = pm.selectByCategorie("dessert");
 
-		// autre idée : selectALL puis création des 3 listes avec boucle for
+		// autre idï¿½e : selectALL puis crï¿½ation des 3 listes avec boucle for
 
 		request.setAttribute("entrees", entrees);
 		request.setAttribute("plats", plats);
 		request.setAttribute("desserts", desserts);
-
+		request.setAttribute("montantCommande", montantCommande);
 		request.setAttribute("commandeEnCours", commandeEnCours);
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("priseDeCommande");
 		rd.forward(request, response);
@@ -81,14 +82,13 @@ public class ServletPriseDeCommande extends HttpServlet {
 			commandeEnCours.add(platAjouter);
 		}
 
-		Integer montantCommande = PlatManager.totalCommande(commandeEnCours);
+		montantCommande = PlatManager.totalCommande(commandeEnCours);
 		request.setAttribute("montantCommande", montantCommande);
 		request.setAttribute("commandeEnCours", commandeEnCours);
 		response.sendRedirect("ServletPriseDeCommande");
-		System.out.println(commandeEnCours);
-		System.out.println(montantCommande);
+
 		/*
-		 * TODO récuperer les données du formulaire de prise de commande et INSERER la
+		 * TODO rï¿½cuperer les donnï¿½es du formulaire de prise de commande et INSERER la
 		 * commande valider
 		 */
 
