@@ -25,8 +25,8 @@ public class CommandeDAOBouchonImpl implements CommandeDAO {
 		plats.add(plat3);
 		plats.add(plat4);
 
-		Commande com1 = new Commande(1, 10, false, LocalTime.now(), plats);
-		Commande com2 = new Commande(2, 2, false, LocalTime.now(), plats);
+		Commande com1 = new Commande(1, 10, 55, false, LocalTime.now(), plats);
+		Commande com2 = new Commande(2, 2, 60, false, LocalTime.now(), plats);
 		commandes.add(com1);
 		commandes.add(com2);
 	}

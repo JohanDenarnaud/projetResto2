@@ -1,5 +1,6 @@
 package bo;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,9 @@ public class Commande {
 	@Column(name = "numero de table")
 	private Integer numTable;
 
+	@Column(name = "montant")
+	private Integer montant;
+
 	/**
 	 * est ce que la commande � etait payer?
 	 * 
@@ -38,7 +42,7 @@ public class Commande {
 	 * L'heure de la prise de commande
 	 */
 	@Column(name = "heure de la commande")
-	private LocalTime heureDeCommande;
+	private LocalDateTime heureDeCommande;
 
 	/**
 	 * La liste des plats dans la commande
@@ -51,14 +55,23 @@ public class Commande {
 		this.plats = new ArrayList<Plat>();
 	}
 
-	public Commande(Integer id, Integer numTable, boolean reglement, LocalTime heureDeCommande, List<Plat> plats) {
+	public Commande(Integer id, Integer numTable, Integer montant, boolean reglement, LocalTime heureDeCommande,
+			List<Plat> plats) {
 		super();
 		this.id = id;
 		this.numTable = numTable;
-
+		this.montant = montant;
 		this.reglement = reglement;
 		this.heureDeCommande = heureDeCommande;
 		this.plats = plats;
+	}
+
+	public Integer getMontant() {
+		return montant;
+	}
+
+	public void setMontant(Integer montant) {
+		this.montant = montant;
 	}
 
 	public Integer getId() {
@@ -89,8 +102,8 @@ public class Commande {
 		return heureDeCommande;
 	}
 
-	public void setHeureDeCommande(LocalTime heureDeCommande) {
-		this.heureDeCommande = heureDeCommande;
+	public void setHeureDeCommande(LocalDateTime dateCommande) {
+		this.heureDeCommande = dateCommande;
 	}
 
 	public List<Plat> getPlats() {
@@ -101,13 +114,6 @@ public class Commande {
 		this.plats = plats;
 	}
 
-	public Integer totalCommande(List<Plat> plats) {
-		Integer montant = 0;
-		for (Plat current : plats) {
-			montant = montant + current.getPrixDeVente();
-		}
-		return montant;
-		// recuperer le prix de chaque plat est faire le total
-	}
+	// recuperer le prix de chaque plat est faire le total
 
 }

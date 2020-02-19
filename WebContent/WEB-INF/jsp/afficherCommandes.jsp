@@ -42,7 +42,7 @@
 						<tr>
 							<th scope="row">${current.id}</th>
 							<td>${current.numTable}</td>
-							<td>${current.totalCommande(current.plats) }</td>
+							<td>${current.montant }</td>
 							
 							<td><button type="button" class="btn btn-md btn-primary myPopover" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Détails…</button></td>
 							<td><select class=form-control>

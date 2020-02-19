@@ -136,7 +136,23 @@
             <!-- CENTRE - GOUTTIÈRE -->
         <div class="col-sm-1"></div>
         <!-- PARTIE DROITE - COMMANDE TABLE -->
-        <form class="form-row align-items-center">
+        <form class="form-row align-items-center" method="Post" action="${ pageContext.request.contextPath }/ServletAfficherCommandes">
+         <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">N° de Table</div>
+                    </div>
+                    <select class="custom-select mr-sm-2" id="inlineFormTableSelect" name ="table">
+                        <option selected>##</option>
+                        <option value="1">01</option>
+                        <option value="2">02</option>
+                        <option value="3">03</option>
+                        <option value="4">04</option>
+                        <option value="5">05</option>
+                        <option value="6">06</option>
+                        <option value="7">07</option>
+                        <option value="8">08</option>
+                    </select>
+                </div>
             <div class="col-sm-6">
                 <label class="liste" for="liste liste-dessert">Récapitulatif
                     de la Commande </label>
