@@ -11,5 +11,6 @@ public class CommandeManager {
 
 	public void setDao(CommandeDAO dao) {
 		this.dao = dao;
+		System.out.println();
 	}
 }
