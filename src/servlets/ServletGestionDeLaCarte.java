@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,6 +43,16 @@ public class ServletGestionDeLaCarte extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		List<Plat> entrees = pm.selectByCategorie("entree");
+		List<Plat> plats = pm.selectByCategorie("plat");
+		List<Plat> desserts = pm.selectByCategorie("dessert");
+
+		// autre id�e : selectALL puis cr�ation des 3 listes avec boucle for
+
+		request.setAttribute("entrees", entrees);
+		request.setAttribute("plats", plats);
+		request.setAttribute("desserts", desserts);
 
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("gestionDeLaCarte");
 		rd.forward(request, response);
