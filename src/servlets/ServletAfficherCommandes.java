@@ -36,9 +36,6 @@ public class ServletAfficherCommandes extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public ServletAfficherCommandes() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -52,12 +49,19 @@ public class ServletAfficherCommandes extends HttpServlet {
 			throws ServletException, IOException {
 
 		/*
-		 * TODO SELECTALL des commandes (toutes ou non rï¿½glï¿½ ï¿½ voir)
+		 * TODO SELECTALL des commandes (toutes ou non réglé à voir)
 		 */
 
 		List<Commande> commandes = cm.selectAllCommandes();
+		for (Commande current : commandes) {
+			System.out.println(current.getPlats());
+		}
 
 		request.setAttribute("commandes", commandes);
+
+		Integer recette = cm.calculRecette(commandes);
+
+		request.setAttribute("recette", recette);
 
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("afficherCommandes");
 		rd.forward(request, response);
@@ -67,7 +71,6 @@ public class ServletAfficherCommandes extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -75,22 +78,29 @@ public class ServletAfficherCommandes extends HttpServlet {
 		platsCommandes = (List<Plat>) session.getAttribute("commandeEnCours");
 		Integer montantCommande = (Integer) session.getAttribute("montantCommande");
 		String numTable = request.getParameter("table");
-		Integer numTableInt = Integer.valueOf(numTable);
 
-		System.out.println(platsCommandes);
-		System.out.println(montantCommande);
 		LocalDateTime dateCommande = LocalDateTime.now();
-
 		Commande commande = new Commande();
-		commande.setNumTable(numTableInt);
-		commande.setMontant(montantCommande);
-		commande.setHeureDeCommande(dateCommande);
-		commande.setPlats(platsCommandes);
-		commande.setReglement(false);
 
-		cm.insertCommande(commande);
+		if (numTable.equals("##")) {
+			session.setAttribute("error", "Veuillez saisir un numéro de table");
+			response.sendRedirect("ServletPriseDeCommande");
+		} else {
+			session.setAttribute("error", null);
+			Integer numTableInt = Integer.valueOf(numTable);
+			commande.setNumTable(numTableInt);
+			commande.setMontant(montantCommande);
+			commande.setHeureDeCommande(dateCommande);
+			commande.setPlats(platsCommandes);
+			commande.setReglement(false);
 
-		doGet(request, response);
+			cm.insertCommande(commande);
+			session.removeAttribute("commandeEnCours");
+			session.removeAttribute("montantCommande");
+
+			doGet(request, response);
+		}
+
 	}
 
 }

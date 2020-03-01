@@ -22,6 +22,7 @@ import bo.Plat;
 @WebServlet("/ServletGestionDeLaCarte")
 public class ServletGestionDeLaCarte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private List<Plat> inventaire;
 	private PlatManager pm;
 
 	@Override
@@ -48,11 +49,24 @@ public class ServletGestionDeLaCarte extends HttpServlet {
 		List<Plat> plats = pm.selectByCategorie("plat");
 		List<Plat> desserts = pm.selectByCategorie("dessert");
 
-		// autre idï¿½e : selectALL puis crï¿½ation des 3 listes avec boucle for
+		// autre idée : selectALL puis création des 3 listes avec boucle for
 
 		request.setAttribute("entrees", entrees);
 		request.setAttribute("plats", plats);
 		request.setAttribute("desserts", desserts);
+
+		Integer montantEntree = pm.CalculMontantInventaire(entrees);
+		request.setAttribute("montantEntree", montantEntree);
+
+		Integer montantPlat = pm.CalculMontantInventaire(plats);
+		request.setAttribute("montantPlat", montantPlat);
+
+		Integer montantDessert = pm.CalculMontantInventaire(desserts);
+		request.setAttribute("montantDessert", montantDessert);
+
+		Integer inventaireTotal = montantDessert + montantEntree + montantPlat;
+
+		request.setAttribute("inventaireTotal", inventaireTotal);
 
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("gestionDeLaCarte");
 		rd.forward(request, response);

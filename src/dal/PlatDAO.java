@@ -12,6 +12,10 @@ public interface PlatDAO {
 
 	public void insertPlat(Plat plat);
 
+	public void update(Plat plat);
+
+	public Plat selectById(Integer idAsInt);
+
 	public void deleteById(Integer idPlatInt);
 
 }

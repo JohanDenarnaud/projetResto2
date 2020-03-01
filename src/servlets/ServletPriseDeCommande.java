@@ -23,7 +23,7 @@ public class ServletPriseDeCommande extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PlatManager pm;
 	private List<Plat> commandeEnCours;
-	Integer montantCommande;
+	private Integer montantCommande;
 
 	@Override
 	public void init() throws ServletException {
@@ -44,27 +44,33 @@ public class ServletPriseDeCommande extends HttpServlet {
 		List<Plat> plats = pm.selectByCategorie("plat");
 		List<Plat> desserts = pm.selectByCategorie("dessert");
 
-		// autre idï¿½e : selectALL puis crï¿½ation des 3 listes avec boucle for
+		// autre idée : selectALL puis création des 3 listes avec boucle for
 
 		request.setAttribute("entrees", entrees);
 		request.setAttribute("plats", plats);
 		request.setAttribute("desserts", desserts);
-		request.setAttribute("montantCommande", montantCommande);
-		request.setAttribute("commandeEnCours", commandeEnCours);
+
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("priseDeCommande");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+//if (liste de plat commande existe) {
+//	ajouter dans la liste  commande sur la jsp prise de commande
+//}else {
+//	creer la liste et ajouter le plat dans la liste 
+//}			
 		HttpSession session = request.getSession();
 
 		String id = request.getParameter("id");
 		String nom = request.getParameter("nom");
+
 		String categorie = request.getParameter("categorie");
 		String prixDeRevient = request.getParameter("prixDeReviens");
 		String prixDeVente = request.getParameter("prixDeVente");
 		String stock = request.getParameter("stock");
+		String nombreDePlat = request.getParameter("quantite");
 
 		Integer idInt = Integer.valueOf(id);
 		Integer prixDeRevientInt = Integer.valueOf(prixDeRevient);
@@ -87,9 +93,8 @@ public class ServletPriseDeCommande extends HttpServlet {
 		session.setAttribute("montantCommande", montantCommande);
 
 		response.sendRedirect("ServletPriseDeCommande");
-
 		/*
-		 * TODO rï¿½cuperer les donnï¿½es du formulaire de prise de commande et INSERER la
+		 * TODO récuperer les données du formulaire de prise de commande et INSERER la
 		 * commande valider
 		 */
 

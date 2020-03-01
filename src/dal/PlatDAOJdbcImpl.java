@@ -15,6 +15,7 @@ import bo.Plat;
 
 public class PlatDAOJdbcImpl implements PlatDAO {
 	private Session session;
+	List<Plat> plats;
 
 	public PlatDAOJdbcImpl() {
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
@@ -41,11 +42,30 @@ public class PlatDAOJdbcImpl implements PlatDAO {
 
 	@Override
 	public void insertPlat(Plat plat) {
-
 		Transaction t = session.beginTransaction();
 		session.save(plat);
 		t.commit();
+	}
 
+	@Override
+	public void update(Plat plat) {
+
+		Plat platAModifier = selectById(plat.getId());
+		platAModifier.setNom(plat.getNom());
+		platAModifier.setPrixDeReviens(plat.getPrixDeReviens());
+		platAModifier.setPrixDeVente(plat.getPrixDeVente());
+		platAModifier.setStock(plat.getStock());
+		platAModifier.setCategorie(plat.getCategorie());
+
+		Transaction t = session.beginTransaction();
+		session.update(platAModifier);
+		t.commit();
+
+	}
+
+	@Override
+	public Plat selectById(Integer idAsInt) {
+		return (Plat) session.load(Plat.class, idAsInt);
 	}
 
 	@Override
@@ -58,5 +78,4 @@ public class PlatDAOJdbcImpl implements PlatDAO {
 		t.commit();
 
 	}
-
 }

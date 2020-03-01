@@ -29,6 +29,7 @@ public class Plat {
 	 */
 	@Column(name = "prixDeReviens")
 	private Integer prixDeReviens;
+
 	/**
 	 * Le type de plat
 	 */
@@ -50,9 +51,9 @@ public class Plat {
 		this.nom = nom;
 		this.prixDeVente = prixDeVente;
 		this.prixDeReviens = prixDeReviens;
+
 		this.categorie = categorie;
 		this.stock = stock;
-
 	}
 
 	public Integer getId() {

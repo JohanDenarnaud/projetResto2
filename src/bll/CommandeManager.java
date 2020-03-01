@@ -7,11 +7,6 @@ import dal.CommandeDAO;
 
 public class CommandeManager {
 	private CommandeDAO dao;
-	private static CommandeManager instance;
-
-	public static CommandeManager getInstance() {
-		return instance;
-	}
 
 	public CommandeDAO getDao() {
 		return dao;
@@ -22,13 +17,22 @@ public class CommandeManager {
 	}
 
 	public List<Commande> selectAllCommandes() {
-
+		// TODO Auto-generated method stub
 		return dao.selectAllCommandes();
 	}
 
 	public void insertCommande(Commande commande) {
-
 		dao.insertCommande(commande);
 
+	}
+
+	public static Integer calculRecette(List<Commande> commandes) {
+
+		Integer recette = 0;
+		for (Commande current : commandes) {
+
+			recette = recette + current.getMontant();
+		}
+		return recette;
 	}
 }

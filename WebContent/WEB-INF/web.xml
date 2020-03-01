@@ -24,7 +24,7 @@
       <jsp-file>/WEB-INF/jsp/gestionDeLaCarte.jsp</jsp-file>
   </servlet>
   
-   <servlet>
+  <servlet>
       <servlet-name>modifier</servlet-name>
       <jsp-file>/WEB-INF/jsp/modifier.jsp</jsp-file>
   </servlet>

@@ -57,4 +57,16 @@ public class PlatDAOBouchonImpl implements PlatDAO {
 
 	}
 
+	@Override
+	public void update(Plat plat) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Plat selectById(Integer idAsInt) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

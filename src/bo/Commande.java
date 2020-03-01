@@ -23,16 +23,12 @@ public class Commande {
 	private Integer id;
 
 	/**
-	 * Le numero de la table ou l'on ï¿½ passï¿½e la commande
+	 * Le numero de la table ou l'on à passée la commande
 	 */
-	@Column(name = "numero de table")
+	@Column(name = "numeroDeTable")
 	private Integer numTable;
-
-	@Column(name = "montant")
-	private Integer montant;
-
 	/**
-	 * est ce que la commande ï¿½ etait payer?
+	 * est ce que la commande à etait payer?
 	 * 
 	 */
 	@Column(name = "reglement")
@@ -40,9 +36,13 @@ public class Commande {
 	/**
 	 * L'heure de la prise de commande
 	 */
-	@Column(name = "heure de la commande")
+	@Column(name = "heureDeLacommande")
 	private LocalDateTime heureDeCommande;
-
+	/**
+	 * montant de la commande
+	 */
+	@Column(name = "montant")
+	private Integer montant;
 	/**
 	 * La liste des plats dans la commande
 	 */
@@ -54,15 +54,19 @@ public class Commande {
 		this.plats = new ArrayList<Plat>();
 	}
 
-	public Commande(Integer id, Integer numTable, Integer montant, boolean reglement, LocalDateTime heureDeCommande,
+	public Commande(Integer id, Integer numTable, boolean reglement, LocalDateTime heureDeCommande, Integer montant,
 			List<Plat> plats) {
 		super();
 		this.id = id;
 		this.numTable = numTable;
-		this.montant = montant;
 		this.reglement = reglement;
 		this.heureDeCommande = heureDeCommande;
+		this.montant = montant;
 		this.plats = plats;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 	public Integer getMontant() {
@@ -71,10 +75,6 @@ public class Commande {
 
 	public void setMontant(Integer montant) {
 		this.montant = montant;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public void setId(Integer id) {
@@ -113,6 +113,8 @@ public class Commande {
 		this.plats = plats;
 	}
 
-	// recuperer le prix de chaque plat est faire le total
+	public void totalCommande() {
+		// recuperer le prix de chaque plat est faire le total
+	}
 
 }

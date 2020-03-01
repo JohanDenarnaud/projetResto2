@@ -5,13 +5,12 @@
 
 	<bean id="dao" class="dal.PlatDAOBouchonImpl" />
 	
-	<bean id="pm" class="bll.PlatManager" >
+	<bean id="pm" class="bll.PlatManager" scope="singleton" >
 		<property name="dao" ref="dao"></property>
 	</bean>
-	
 	<bean id="dao1" class="dal.CommandeDAOBouchonImpl" />
 	
-	<bean id="cm" class="bll.CommandeManager" >
+	<bean id="cm" class="bll.CommandeManager" scope="singleton">
 		<property name="dao" ref="dao1"></property>
 	</bean>
 	

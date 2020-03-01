@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import bll.PlatManager;
+import bo.Plat;
 
 /**
  * Servlet implementation class ServletModifierPlat
@@ -45,11 +46,12 @@ public class ServletModifierPlat extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-//		String id = request.getParameter("id");
-//		Integer idAsInt = Integer.valueOf(id);
-//
-//		// Plat plat = pm.selectById(idAsInt);
-//		// request.setAttribute("plat", plat);
+		String id = request.getParameter("id");
+		System.out.println(id);
+		Integer idAsInt = Integer.valueOf(id);
+
+		Plat plat = pm.selectById(idAsInt);
+		request.setAttribute("plat", plat);
 
 		RequestDispatcher rd = this.getServletContext().getNamedDispatcher("modifier");
 		rd.forward(request, response);
@@ -61,27 +63,27 @@ public class ServletModifierPlat extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		String nomPlat = request.getParameter("nom");
-//		String prixVente = request.getParameter("prixVente");
-//		String prixRevient = request.getParameter("prixRevient");
-//		String stock = request.getParameter("stock");
-//		String categorie = request.getParameter("categorie");
-//		String id = request.getParameter("id");
-//
-//		Integer prixVenteInt = Integer.valueOf(prixVente);
-//		Integer prixRevientInt = Integer.valueOf(prixRevient);
-//		Integer stockInt = Integer.valueOf(stock);
-//
-//		Plat plat = new Plat();
-//		plat.setCategorie(categorie);
-//		plat.setNom(nomPlat);
-//		plat.setPrixDeReviens(prixRevientInt);
-//		plat.setPrixDeVente(prixVenteInt);
-//		plat.setStock(stockInt);
-//		Integer idAsInt = Integer.valueOf(id);
+		String nomPlat = request.getParameter("nom");
+		String prixVente = request.getParameter("prixVente");
+		String prixRevient = request.getParameter("prixRevient");
+		String stock = request.getParameter("stock");
+		String categorie = request.getParameter("categorie");
+		String id = request.getParameter("id");
 
-//		pm.update(new Plat(idAsInt, nomPlat, prixVenteInt, prixRevientInt, categorie, stockInt));
-		doGet(request, response);
+		Integer prixVenteInt = Integer.valueOf(prixVente);
+		Integer prixRevientInt = Integer.valueOf(prixRevient);
+		Integer stockInt = Integer.valueOf(stock);
+
+		Plat plat = new Plat();
+		plat.setCategorie(categorie);
+		plat.setNom(nomPlat);
+		plat.setPrixDeReviens(prixRevientInt);
+		plat.setPrixDeVente(prixVenteInt);
+		plat.setStock(stockInt);
+		Integer idAsInt = Integer.valueOf(id);
+
+		pm.update(new Plat(idAsInt, nomPlat, prixVenteInt, prixRevientInt, categorie, stockInt));
+		response.sendRedirect("ServletGestionDeLaCarte");
 	}
 
 }
